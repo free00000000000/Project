@@ -4,6 +4,7 @@ import android.os.StrictMode;
 import android.util.Log;
 
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 
 import java.io.File;
@@ -31,6 +32,7 @@ public class FTPManager {
         if (FTPReply.isPositiveCompletion(ftpClient.getReplyCode())) {
             if (ftpClient.login("vsftp", "123")) {
                 bool = true;
+                ftpClient.enterLocalPassiveMode();
                 Log.d("myTag", "ftp connected successfully");
             }
         }
@@ -52,15 +54,28 @@ public class FTPManager {
             FileInputStream input = new FileInputStream(localFile);
             ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);
             boolean s = ftpClient.changeWorkingDirectory("test/");
-            ftpClient.enterLocalPassiveMode();
             success = ftpClient.storeFile(localFile.getName(), input);
             input.close();
             return success;
         } catch (Exception e) {
-            Log.d("myTag", "upload failed: " + e);
+            Log.d("myTag", "upload failed: " + e.getMessage());
         }
         return  success;
-
+    }
+    public synchronized boolean findFile(String filename) {
+        String remotePath = "/test/" + filename;
+        Log.d("myTag", remotePath);
+        try{
+            FTPFile[] remoteFiles = ftpClient.listFiles(remotePath);
+            if (remoteFiles.length > 0)
+            {
+                return true;
+            }
+            return false;
+        } catch(Exception e){
+            Log.d("myTag", "check file failed: " + e.getMessage());
+        }
+        return false;
     }
 
     // 如果ftp上傳打開，就關閉掉

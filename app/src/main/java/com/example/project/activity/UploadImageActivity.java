@@ -115,12 +115,12 @@ public class UploadImageActivity extends AppCompatActivity {
                                     ftpm.closeFTP();
                                     Toast.makeText(getApplicationContext(), "ftp upload success", Toast.LENGTH_SHORT).show();
                                     Log.d("myTag", "ftp upload success");
-                                    goNext();
+                                    // TODO: remove img
+                                    goNext(Img.getName());
                                 }
                                 ftpm.closeFTP();
                             }
                         } catch (Exception e) {
-                            // TODO: handle exception
                             Log.d("myTag", e.getMessage()+" ");
                             Log.d("myTag", "ftp failed");
                             Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
@@ -179,11 +179,12 @@ public class UploadImageActivity extends AppCompatActivity {
         }
     }
 
-    public void goNext() {
+    public void goNext(String img_name) {
         // TODO: remove jpg
         Intent intent = new Intent(this, SendToServerActivity.class);
-        startActivity(intent);
+        intent.putExtra("img_name", img_name);
         Log.d("myTag", "Next");
+        startActivity(intent);
 
     }
 
