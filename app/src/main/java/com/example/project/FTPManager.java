@@ -15,11 +15,13 @@ public class FTPManager {
 
     public FTPManager() {
         ftpClient = new FTPClient();
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
     }
+
 
     // 連接到ftp服務器
     public synchronized boolean connect() throws Exception {
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
+
         boolean bool = false;
         if (ftpClient.isConnected()) {//判斷是否已登陸
             ftpClient.disconnect();
