@@ -115,8 +115,10 @@ public class UploadImageActivity extends AppCompatActivity {
                                     ftpm.closeFTP();
                                     Toast.makeText(getApplicationContext(), "ftp upload success", Toast.LENGTH_SHORT).show();
                                     Log.d("myTag", "ftp upload success");
-                                    // TODO: remove img
-                                    goNext(Img.getName());
+
+                                    String jpg = Img.getName();
+                                    Img.delete();
+                                    goNext(jpg);
                                 }
                                 ftpm.closeFTP();
                             }
@@ -180,7 +182,6 @@ public class UploadImageActivity extends AppCompatActivity {
     }
 
     public void goNext(String img_name) {
-        // TODO: remove jpg
         Intent intent = new Intent(this, SendToServerActivity.class);
         intent.putExtra("img_name", img_name);
         Log.d("myTag", "Next");
@@ -210,7 +211,7 @@ public class UploadImageActivity extends AppCompatActivity {
     }
 
     private File saveImageToExternalStorage(Bitmap finalBitmap) {
-        File myDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "DocScanner");
+        File myDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "musiccc");
         if (!myDir.exists()) {
             myDir.mkdir();
             Toast.makeText(getApplicationContext(), "Directory not exist, create it", Toast.LENGTH_SHORT).show();

@@ -9,6 +9,9 @@ import org.apache.commons.net.ftp.FTPReply;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class FTPManager {
     FTPClient ftpClient = null;
@@ -64,6 +67,34 @@ public class FTPManager {
         }
         return  success;
     }
+
+
+
+    /**
+     * srcFilePath: path to the source file in FTP server
+     * desFilePath: path to the destination file to be saved in sdcard
+     */
+    public synchronized boolean downloadFile(String filename, String desFilePath) throws Exception {
+        String srcFilePath = "/test/" + filename;
+        desFilePath = desFilePath + "/" + filename;
+
+        Log.d("myTag", desFilePath);
+
+        // 開始準備下載文件
+        boolean status = false;
+        try {
+            FileOutputStream desFileStream = new FileOutputStream(desFilePath);;
+            status = ftpClient.retrieveFile(srcFilePath, desFileStream);
+            Log.d("", Boolean.toString(status));
+            desFileStream.close();
+            return status;
+
+        } catch (Exception e) {
+            Log.d("", "download failed: " + e.getMessage());
+        }
+        return status;
+    }
+
     public synchronized boolean findFile(String filename) {
         String remotePath = "/test/" + filename;
         Log.d("myTag", remotePath);
