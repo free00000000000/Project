@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -20,7 +21,9 @@ import java.io.File;
 
 
 public class SendToServerActivity extends AppCompatActivity {
-    ProgressWheel wheel;
+//    ProgressWheel wheel;
+    MediaPlayer player;
+    pl.droidsonroids.gif.GifImageView loading;
     String img_name;
     String name;
     boolean finish;
@@ -42,8 +45,9 @@ public class SendToServerActivity extends AppCompatActivity {
         play = findViewById(R.id.button3);
         home = findViewById(R.id.button4);
         downloadxml = findViewById(R.id.button5);
-        wheel = findViewById(R.id.progress_wheel);
-        wheel.setBarColor(Color.RED);
+        loading = findViewById(R.id.gif);
+//        wheel = findViewById(R.id.progress_wheel);
+//        wheel.setBarColor(Color.RED);
 
 //        wheel.setVisibility(View.INVISIBLE);
         Log.d("myTag", "ftp connecting...");
@@ -59,7 +63,7 @@ public class SendToServerActivity extends AppCompatActivity {
                     public void run() {
                         if (!finish) {
                             try {
-                                finish = ftpm.findFile(name+".mp3");
+                                finish = ftpm.findFile(name+".wav");
                                 handler.postDelayed(this, 5000);
                             } catch (Exception e) {
                                 Log.d("myTag", e.getMessage()+" ");
@@ -70,8 +74,8 @@ public class SendToServerActivity extends AppCompatActivity {
                         else {
                             Log.d("myTag", "conversion successed");
                             Toast.makeText(getApplicationContext(), "Complete conversion", Toast.LENGTH_SHORT).show();
-                            download(name+".mp3");
-                            wheel.setVisibility(View.INVISIBLE);
+                            download(name+".wav");
+                            loading.setVisibility(View.INVISIBLE);
                             play.setVisibility(View.VISIBLE);
                             home.setVisibility(View.VISIBLE);
                             downloadxml.setVisibility(View.VISIBLE);

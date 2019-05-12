@@ -31,4 +31,5 @@ dependencies {
     implementation 'com.github.chrisbanes:PhotoView:1.2.6'
     implementation 'commons-net:commons-net:3.6'
     implementation 'com.pnikosis:materialish-progress:1.7'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.17'
 }
