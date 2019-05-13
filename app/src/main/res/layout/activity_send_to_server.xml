@@ -19,6 +19,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
+        android:onClick="play"
         android:text="@string/play"
         android:visibility="invisible"
         wheel:layout_constraintBottom_toBottomOf="parent"

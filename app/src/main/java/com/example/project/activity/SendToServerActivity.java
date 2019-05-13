@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -64,7 +65,7 @@ public class SendToServerActivity extends AppCompatActivity {
                         if (!finish) {
                             try {
                                 finish = ftpm.findFile(name+".wav");
-                                handler.postDelayed(this, 5000);
+                                handler.postDelayed(this, 1000);
                             } catch (Exception e) {
                                 Log.d("myTag", e.getMessage()+" ");
                                 Log.d("myTag", "ftp failed");
@@ -85,7 +86,7 @@ public class SendToServerActivity extends AppCompatActivity {
 
                         }
                     }
-                }, 5000);
+                }, 1000);
             }
         } catch (Exception e) {
             Log.d("myTag", e.getMessage()+" ");
@@ -119,7 +120,7 @@ public class SendToServerActivity extends AppCompatActivity {
     public void getxml(View view) {
         try {
             if(ftpm.connect()) {
-                download(name + ".xml");
+                download(name + ".musicxml");
                 ftpm.closeFTP();
             }
 
@@ -131,6 +132,27 @@ public class SendToServerActivity extends AppCompatActivity {
     public void back_to_menu(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void play(View v) {
+        if(player == null) {
+            player = MediaPlayer.create(this, Uri.parse(Environment.getExternalStorageDirectory().getPath() + "/Download/musiccc/"+ name+".wav"));
+            Toast.makeText(getApplicationContext(), "Path = " + Environment.getExternalStorageDirectory().getPath(), Toast.LENGTH_SHORT).show();
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    stopPlayer();
+                }
+            });
+        }
+        player.start();
+    }
+
+    private void stopPlayer() {
+        if(player != null) {
+            player.release();
+            player = null;
+        }
     }
 
 }
