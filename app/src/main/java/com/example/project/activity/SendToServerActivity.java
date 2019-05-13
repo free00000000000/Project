@@ -22,7 +22,7 @@ import java.io.File;
 
 
 public class SendToServerActivity extends AppCompatActivity {
-//    ProgressWheel wheel;
+
     MediaPlayer player;
     pl.droidsonroids.gif.GifImageView loading;
     String img_name;
@@ -34,6 +34,29 @@ public class SendToServerActivity extends AppCompatActivity {
     Button home;
     Button downloadxml;
 
+    public void play() {
+        if (player == null) {
+            player = MediaPlayer.create(this, R.raw.music);
+            player.setLooping(true);
+            player.setVolume(100,100);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    stopPlayer();
+                }
+            });
+        }
+
+        player.start();
+    }
+
+    private void stopPlayer() {
+        if (player != null) {
+            player.release();
+            player = null;
+            Toast.makeText(this, "MediaPlayer released", Toast.LENGTH_SHORT).show();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +70,9 @@ public class SendToServerActivity extends AppCompatActivity {
         home = findViewById(R.id.button4);
         downloadxml = findViewById(R.id.button5);
         loading = findViewById(R.id.gif);
-//        wheel = findViewById(R.id.progress_wheel);
-//        wheel.setBarColor(Color.RED);
 
-//        wheel.setVisibility(View.INVISIBLE);
+
+        play();
         Log.d("myTag", "ftp connecting...");
         ftpm = new FTPManager();
 
@@ -76,6 +98,7 @@ public class SendToServerActivity extends AppCompatActivity {
                             Log.d("myTag", "conversion successed");
                             Toast.makeText(getApplicationContext(), "Complete conversion", Toast.LENGTH_SHORT).show();
                             download(name+".wav");
+                            stopPlayer();
                             loading.setVisibility(View.INVISIBLE);
                             play.setVisibility(View.VISIBLE);
                             home.setVisibility(View.VISIBLE);
@@ -148,11 +171,5 @@ public class SendToServerActivity extends AppCompatActivity {
         player.start();
     }
 
-    private void stopPlayer() {
-        if(player != null) {
-            player.release();
-            player = null;
-        }
-    }
 
 }
