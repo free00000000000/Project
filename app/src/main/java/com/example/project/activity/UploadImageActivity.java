@@ -386,6 +386,7 @@ public class UploadImageActivity extends AppCompatActivity {
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
         } else if (id == R.id.action_camera) {
             // TODO Camera
+
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             // Ensure that there's a camera activity to handle the intent
             if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -393,13 +394,16 @@ public class UploadImageActivity extends AppCompatActivity {
                 File photoFile = null;
                 try {
                     photoFile = createImageFile();
+
                 } catch (IOException e) {
                     e.printStackTrace();
+                    Log.d("myTag", e.getMessage());
                 }
                 // Continue only if the File was successfully created
                 if (photoFile != null) {
+                    Log.d("myTag", "cameraaaa");
                     Uri photoURI = FileProvider.getUriForFile(this,
-                            "com.joshuabutton.documentscanner.fileprovider",
+                            "com.example.project.fileprovider",
                             photoFile);
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);

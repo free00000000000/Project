@@ -102,7 +102,7 @@ public class SendToServerActivity extends AppCompatActivity {
                         else {
                             Log.d("myTag", "conversion successed");
                             Toast.makeText(getApplicationContext(), "Complete conversion", Toast.LENGTH_SHORT).show();
-                            download(name+".wav");
+                            download(name+".wav", "");
                             stopPlayer();
                             loadtxt.setVisibility(View.INVISIBLE);
                             wheel.setVisibility(View.INVISIBLE);
@@ -127,9 +127,9 @@ public class SendToServerActivity extends AppCompatActivity {
 
     }
 
-    private void download(String filename) {
+    private void download(String filename, String dir) {
         // TODO: change dir?
-        File myDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "musiccc");
+        File myDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "musiccc/" + dir);
         if (!myDir.exists()) {
             myDir.mkdir();
             Toast.makeText(getApplicationContext(), "Directory not exist, create it", Toast.LENGTH_SHORT).show();
@@ -151,7 +151,7 @@ public class SendToServerActivity extends AppCompatActivity {
     public void getxml(View view) {
         try {
             if(ftpm.connect()) {
-                download(name + ".musicxml");
+                download(name + ".musicxml", "xml");
                 ftpm.closeFTP();
             }
 
