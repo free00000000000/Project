@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.project.FTPManager;
@@ -22,7 +23,7 @@ import java.io.File;
 
 
 public class SendToServerActivity extends AppCompatActivity {
-
+    ProgressWheel wheel;
     MediaPlayer player;
     pl.droidsonroids.gif.GifImageView loading;
     String img_name;
@@ -33,6 +34,7 @@ public class SendToServerActivity extends AppCompatActivity {
     Button play;
     Button home;
     Button downloadxml;
+    TextView loadtxt;
 
     public void play() {
         if (player == null) {
@@ -70,6 +72,9 @@ public class SendToServerActivity extends AppCompatActivity {
         home = findViewById(R.id.button4);
         downloadxml = findViewById(R.id.button5);
         loading = findViewById(R.id.gif);
+        wheel = findViewById(R.id.progress_wheel);
+        loadtxt = findViewById(R.id.textView);
+//        wheel.setBarColor(Color.RED);
 
 
         play();
@@ -99,10 +104,13 @@ public class SendToServerActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Complete conversion", Toast.LENGTH_SHORT).show();
                             download(name+".wav");
                             stopPlayer();
+                            loadtxt.setVisibility(View.INVISIBLE);
+                            wheel.setVisibility(View.INVISIBLE);
                             loading.setVisibility(View.INVISIBLE);
                             play.setVisibility(View.VISIBLE);
                             home.setVisibility(View.VISIBLE);
                             downloadxml.setVisibility(View.VISIBLE);
+
                             try {
                                 ftpm.closeFTP();
                             } catch (Exception e) { }
