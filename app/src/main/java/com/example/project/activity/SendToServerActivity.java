@@ -3,7 +3,6 @@ package com.example.project.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +33,7 @@ public class SendToServerActivity extends AppCompatActivity {
     Button play;
     Button home;
     Button downloadxml;
+    Button piano;
     TextView loadtxt;
 
     public void play() {
@@ -71,6 +71,7 @@ public class SendToServerActivity extends AppCompatActivity {
         play = findViewById(R.id.button3);
         home = findViewById(R.id.button4);
         downloadxml = findViewById(R.id.button5);
+        piano = findViewById(R.id.button6);
         loading = findViewById(R.id.gif);
         wheel = findViewById(R.id.progress_wheel);
         loadtxt = findViewById(R.id.textView);
@@ -110,6 +111,7 @@ public class SendToServerActivity extends AppCompatActivity {
                             play.setVisibility(View.VISIBLE);
                             home.setVisibility(View.VISIBLE);
                             downloadxml.setVisibility(View.VISIBLE);
+                            piano.setVisibility(View.VISIBLE);
 
                             try {
                                 ftpm.closeFTP();
@@ -179,5 +181,8 @@ public class SendToServerActivity extends AppCompatActivity {
         player.start();
     }
 
-
+    public void go_to_piano(View view){
+        Intent intent = new Intent(this, PlayPianoActivity.class);
+        startActivity(intent);
+    }
 }

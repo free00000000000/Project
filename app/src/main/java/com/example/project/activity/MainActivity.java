@@ -19,4 +19,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, UploadImageActivity.class);
         startActivity(intent);
     }
+
+    public void go_to_piano(View view){
+        Intent intent = new Intent(this, PlayPianoActivity.class);
+        startActivity(intent);
+    }
 }
