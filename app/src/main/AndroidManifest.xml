@@ -30,11 +30,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PlayPianoActivity"
+        <activity android:name=".activity.PlayList"></activity>
+        <activity
+            android:name=".activity.PlayListAcitivity"
+            android:label="@string/title_activity_play_list_acitivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.PlayPianoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Hahaha"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".activity.SendToServerActivity" />
         <activity android:name=".activity.UploadImageActivity" />
         <activity android:name=".activity.MainActivity">
