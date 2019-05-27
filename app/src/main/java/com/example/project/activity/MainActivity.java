@@ -1,11 +1,12 @@
 package com.example.project.activity;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.project.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void go_to_playlist(View view){
-        Intent intent = new Intent(this,PlayList.class);
+        Intent intent = new Intent(this,PlayListList.class);
         startActivity(intent);
     }
 }

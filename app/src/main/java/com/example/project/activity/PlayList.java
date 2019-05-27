@@ -1,15 +1,20 @@
 package com.example.project.activity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.project.R;
+
+import java.io.File;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +27,8 @@ public class PlayList extends AppCompatActivity {
     TextView remainingTimeLabel;
     MediaPlayer mp;
     int totalTime;
+    File wav_path;
+    Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +40,12 @@ public class PlayList extends AppCompatActivity {
         remainingTimeLabel = (TextView) findViewById(R.id.remainingTimeLabel);
 
         // Media Player
-        mp = MediaPlayer.create(this, R.raw.music);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("wav");
+        wav_path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "musiccc/"+name);
+        Uri uri = Uri.fromFile(wav_path);
+
+        mp = MediaPlayer.create(this, uri);
         mp.setLooping(true);
         mp.seekTo(0);
         mp.setVolume(0.5f, 0.5f);
