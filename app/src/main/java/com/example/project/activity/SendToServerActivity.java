@@ -74,7 +74,8 @@ public class SendToServerActivity extends AppCompatActivity {
         loading = findViewById(R.id.gif);
         wheel = findViewById(R.id.progress_wheel);
         loadtxt = findViewById(R.id.textView);
-//        wheel.setBarColor(Color.RED);
+        wheel.setBarColor(Color.rgb(0, 132, 101));
+        wheel.setBarWidth(30);
 
 
         play();

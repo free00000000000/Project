@@ -4,26 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".activity.SendToServerActivity">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gif"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="12dp"
         android:background="@mipmap/music"
-        wheel:layout_constraintStart_toStartOf="parent"
-        wheel:layout_constraintTop_toTopOf="parent" />
+        wheel:layout_constraintEnd_toEndOf="@+id/progress_wheel"
+        wheel:layout_constraintStart_toStartOf="@+id/progress_wheel"
+        wheel:layout_constraintTop_toTopOf="@+id/progress_wheel" />
 
     <com.pnikosis.materialishprogress.ProgressWheel
         android:id="@+id/progress_wheel"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="125dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="126dp"
         wheel:layout_constraintEnd_toEndOf="parent"
         wheel:layout_constraintStart_toStartOf="parent"
@@ -36,34 +37,35 @@
         android:id="@+id/button3"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="28dp"
         android:onClick="play"
         android:text="@string/play"
         android:visibility="invisible"
         wheel:layout_constraintBottom_toBottomOf="parent"
-        wheel:layout_constraintEnd_toStartOf="@+id/button4"
         wheel:layout_constraintStart_toEndOf="@+id/button5" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="28dp"
         android:onClick="back_to_menu"
         android:text="@string/home"
         android:visibility="invisible"
         wheel:layout_constraintBottom_toBottomOf="parent"
-        wheel:layout_constraintEnd_toEndOf="parent" />
+        wheel:layout_constraintEnd_toEndOf="parent"
+        wheel:layout_constraintHorizontal_bias="0.0"
+        wheel:layout_constraintStart_toEndOf="@+id/button3" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="28dp"
         android:onClick="getxml"
         android:text="@string/dxml"
         android:visibility="invisible"
@@ -75,17 +77,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="138dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="138dp"
-        android:layout_marginBottom="160dp"
         android:lineSpacingExtra="8sp"
         android:text="@string/load"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
         android:visibility="visible"
-        wheel:layout_constraintBottom_toBottomOf="parent"
         wheel:layout_constraintEnd_toEndOf="parent"
-        wheel:layout_constraintStart_toStartOf="parent" />
+        wheel:layout_constraintStart_toStartOf="parent"
+        wheel:layout_constraintTop_toBottomOf="@+id/gif" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
