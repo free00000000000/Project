@@ -72,6 +72,18 @@
         wheel:layout_constraintBottom_toBottomOf="parent"
         wheel:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="go_to_piano"
+        android:text="@string/piano"
+        android:visibility="invisible"
+        wheel:layout_constraintBottom_toBottomOf="parent"
+        wheel:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
