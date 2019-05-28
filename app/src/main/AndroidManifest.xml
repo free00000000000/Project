@@ -25,9 +25,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/omr_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.PlayListList"></activity>
@@ -35,7 +34,7 @@
         <activity
             android:name=".activity.PlayPianoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="Hahaha"
+            android:label="PlayPianoActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".activity.SendToServerActivity" />

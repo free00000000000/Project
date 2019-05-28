@@ -46,7 +46,7 @@ public class PlayList extends AppCompatActivity {
         Uri uri = Uri.fromFile(wav_path);
 
         mp = MediaPlayer.create(this, uri);
-        mp.setLooping(true);
+        mp.setLooping(false);
         mp.seekTo(0);
         mp.setVolume(0.5f, 0.5f);
         totalTime = mp.getDuration();
