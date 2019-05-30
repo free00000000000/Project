@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.project.R;
+import com.example.project.XMLPlaylist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void go_to_piano(View view){
         Intent intent = new Intent(this, PlayPianoActivity.class);
+        startActivity(intent);
+    }
+
+    public void goto_xmlplaylist(View view){
+        Intent intent = new Intent(this, XMLPlaylist.class);
         startActivity(intent);
     }
 

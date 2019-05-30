@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.project.FTPManager;
 import com.example.project.R;
+import com.example.project.XMLPlaylist;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.io.File;
@@ -32,8 +33,7 @@ public class SendToServerActivity extends AppCompatActivity {
     Handler handler;
     Button play;
     Button home;
-    Button downloadxml;
-    Button piano;
+    Button xmlplaylist;
     TextView loadtxt;
 
     public void play() {
@@ -70,8 +70,7 @@ public class SendToServerActivity extends AppCompatActivity {
         Log.d("myTag", name);
         play = findViewById(R.id.button3);
         home = findViewById(R.id.button4);
-        downloadxml = findViewById(R.id.button5);
-        piano = findViewById(R.id.button6);
+        xmlplaylist = findViewById(R.id.button5);
         loading = findViewById(R.id.gif);
         wheel = findViewById(R.id.progress_wheel);
         loadtxt = findViewById(R.id.textView);
@@ -105,14 +104,14 @@ public class SendToServerActivity extends AppCompatActivity {
                             Log.d("myTag", "conversion successed");
                             Toast.makeText(getApplicationContext(), "Complete conversion", Toast.LENGTH_SHORT).show();
                             download(name+".wav", "");
+                            getxml();
                             stopPlayer();
                             loadtxt.setVisibility(View.INVISIBLE);
                             wheel.setVisibility(View.INVISIBLE);
                             loading.setVisibility(View.INVISIBLE);
                             play.setVisibility(View.VISIBLE);
                             home.setVisibility(View.VISIBLE);
-                            downloadxml.setVisibility(View.VISIBLE);
-                            piano.setVisibility(View.VISIBLE);
+                            xmlplaylist.setVisibility(View.VISIBLE);
 
                             try {
                                 ftpm.closeFTP();
@@ -151,7 +150,7 @@ public class SendToServerActivity extends AppCompatActivity {
         }
     }
 
-    public void getxml(View view) {
+    public void getxml() {
         try {
             if(ftpm.connect()) {
                 download(name + ".musicxml", "xml");
@@ -184,6 +183,11 @@ public class SendToServerActivity extends AppCompatActivity {
 
     public void go_to_piano(View view){
         Intent intent = new Intent(this, PlayPianoActivity.class);
+        startActivity(intent);
+    }
+
+    public void goto_xmlplaylist(View view){
+        Intent intent = new Intent(this, XMLPlaylist.class);
         startActivity(intent);
     }
 }

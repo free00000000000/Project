@@ -19,161 +19,196 @@
             android:layout_height="match_parent">
             <Button
                 style="@style/firstwhitekey"
-                android:id="@+id/w1" />
+                android:id="@+id/w1"
+                android:background="@drawable/transition"/>
 
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w2"
-                android:layout_toRightOf="@id/w1" />
+                android:layout_toRightOf="@id/w1"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w3"
-                android:layout_toRightOf="@id/w2" />
+                android:layout_toRightOf="@id/w2"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w4"
-                android:layout_toRightOf="@id/w3"/>
+                android:layout_toRightOf="@id/w3"
+                android:background="@drawable/transition"/>
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w5"
-                android:layout_toRightOf="@id/w4" />
+                android:layout_toRightOf="@id/w4"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w6"
-                android:layout_toRightOf="@id/w5" />
+                android:layout_toRightOf="@id/w5"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w7"
-                android:layout_toRightOf="@id/w6" />
+                android:layout_toRightOf="@id/w6"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w8"
-                android:layout_toRightOf="@id/w7" />
+                android:layout_toRightOf="@id/w7"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w9"
-                android:layout_toRightOf="@id/w8" />
+                android:layout_toRightOf="@id/w8"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w10"
-                android:layout_toRightOf="@id/w9" />
+                android:layout_toRightOf="@id/w9"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w11"
-                android:layout_toRightOf="@id/w10" />
+                android:layout_toRightOf="@id/w10"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w12"
-                android:layout_toRightOf="@id/w11" />
+                android:layout_toRightOf="@id/w11"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w13"
-                android:layout_toRightOf="@id/w12" />
+                android:layout_toRightOf="@id/w12"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w14"
-                android:layout_toRightOf="@id/w13" />
+                android:layout_toRightOf="@id/w13"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w15"
-                android:layout_toRightOf="@id/w14" />
+                android:layout_toRightOf="@id/w14"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w16"
-                android:layout_toRightOf="@id/w15" />
+                android:layout_toRightOf="@id/w15"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w17"
-                android:layout_toRightOf="@id/w16" />
+                android:layout_toRightOf="@id/w16"
+                android:background="@drawable/transition" />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w18"
                 android:layout_toRightOf="@id/w17"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w19"
                 android:layout_toRightOf="@id/w18"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w20"
                 android:layout_toRightOf="@id/w19"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w21"
                 android:layout_toRightOf="@id/w20"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w22"
                 android:layout_toRightOf="@id/w21"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w23"
                 android:layout_toRightOf="@id/w22"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w24"
                 android:layout_toRightOf="@id/w23"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w25"
                 android:layout_toRightOf="@id/w24"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w26"
                 android:layout_toRightOf="@id/w25"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w27"
                 android:layout_toRightOf="@id/w26"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w28"
                 android:layout_toRightOf="@id/w27"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w29"
                 android:layout_toRightOf="@id/w28"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w30"
                 android:layout_toRightOf="@id/w29"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w31"
                 android:layout_toRightOf="@id/w30"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w32"
                 android:layout_toRightOf="@id/w31"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w33"
                 android:layout_toRightOf="@id/w32"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w34"
                 android:layout_toRightOf="@id/w33"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/whitekey"
                 android:id="@+id/w35"
                 android:layout_toRightOf="@id/w34"
+                android:background="@drawable/transition"
                 />
             <Button
                 style="@style/blackkey"

@@ -3,9 +3,10 @@
     <string name="button_start">Start</string>
     <string name="play">Play</string>
     <string name="home">Home</string>
-    <string name="dxml">Download xml</string>
+    <string name="dxml">XML Playlist</string>
     <string name="load">Loading......</string>
     <string name="piano">Piano</string>
     <string name="title_activity_play_list_acitivity">PlayListAcitivity</string>
+    <string name="title_activity_xmlplaylist">XMLPlaylist</string>
 
 </resources>

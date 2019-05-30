@@ -37,7 +37,7 @@
         android:id="@+id/button3"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginBottom="28dp"
         android:onClick="play"
         android:text="@string/play"
@@ -66,20 +66,8 @@
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="28dp"
-        android:onClick="getxml"
+        android:onClick="goto_xmlplaylist"
         android:text="@string/dxml"
-        android:visibility="invisible"
-        wheel:layout_constraintBottom_toBottomOf="parent"
-        wheel:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="32dp"
-        android:onClick="go_to_piano"
-        android:text="@string/piano"
         android:visibility="invisible"
         wheel:layout_constraintBottom_toBottomOf="parent"
         wheel:layout_constraintStart_toStartOf="parent" />
