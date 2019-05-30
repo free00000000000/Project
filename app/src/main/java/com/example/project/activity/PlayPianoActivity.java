@@ -1,7 +1,10 @@
 package com.example.project.activity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,6 +17,18 @@ import com.example.project.R;
 import org.billthefarmer.mididriver.MidiDriver;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.InputStream;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class PlayPianoActivity extends AppCompatActivity implements View.OnTouchListener,
         MidiDriver.OnMidiStartListener {
@@ -135,7 +150,9 @@ public class PlayPianoActivity extends AppCompatActivity implements View.OnTouch
     private TextView ta7;
     private TextView tb7;
 
-    private MediaPlayer   mPlayer;
+    private MediaPlayer mPlayer;
+    String note, duration, staff;
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -745,4 +762,187 @@ public class PlayPianoActivity extends AppCompatActivity implements View.OnTouch
         return false;
     }
 
+    // Parse MusicXML
+    // Only works for right hand and major notes on C
+    public void auto_play_piano(View view){
+        try {
+            InputStream is = getAssets().open("Image-3968.musicxml");
+
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(is);
+
+            Element element=doc.getDocumentElement();
+            element.normalize();
+
+            NodeList nList = doc.getElementsByTagName("part");
+
+            for (int i=0; i<nList.getLength(); i++) {
+                Element partNode = (Element) nList.item(i);
+                NodeList measureList = partNode.getElementsByTagName("measure");
+                //Log.d("measureAppear", "i = "+Integer.toString(i));
+                for(int j=0; j<measureList.getLength(); j++)
+                {
+                    Element measureNode = (Element) measureList.item(j);
+                    NodeList noteList = measureNode.getElementsByTagName("note");
+                    //Log.d("noteAppear", "i = "+Integer.toString(i)+", j = "+Integer.toString(j));
+                    for(int k=0; k<noteList.getLength(); k++)
+                    {
+                        Element pitchNode = (Element) noteList.item(k);
+                        NodeList pitchList = pitchNode.getElementsByTagName("pitch");
+                        for(int l=0; l<pitchList.getLength(); l++)
+                        {
+                            Node node = pitchList.item(l);
+                            if(node.getNodeType() == Node.ELEMENT_NODE)
+                            {
+                                Element eElement = (Element) node;
+                                note = getValue("step", eElement) + getValue("octave", eElement);
+                            }
+                        }
+                        duration = getValue("duration", pitchNode);
+                        staff = getValue("staff", pitchNode);
+                    }
+                    // Only play right hand
+                    if(staff.equals("1")) {
+                        // Change played note color to YELLOW
+                        changeColor(note, Color.YELLOW);
+                        //changeColor(note, Color.WHITE);
+
+                        Log.d("changeColor", note+" to BLACK");
+
+
+                        handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            //@Override
+                            public void run() {
+                                // After delay (duration), change it back to normal WHITE
+                                changeColor(note, Color.WHITE);
+                                Log.d("changeColor", note+" to WHITE");
+                            }
+                        }, 10);
+                        handler.removeCallbacks(null);
+                    }
+                }
+            }
+
+        } catch (Exception e) {e.printStackTrace();}
+    }
+
+    private void changeColor(String n, int color) {
+        switch(n) {
+            case "C3":
+                buttonC3.setBackgroundColor(color);
+                break;
+            case "D3":
+                buttonD3.setBackgroundColor(color);
+                break;
+            case "E3":
+                buttonE3.setBackgroundColor(color);
+                break;
+            case "F3":
+                buttonF3.setBackgroundColor(color);
+                break;
+            case "G3":
+                buttonG3.setBackgroundColor(color);
+                break;
+            case "A3":
+                buttonA3.setBackgroundColor(color);
+                break;
+            case "B3":
+                buttonB3.setBackgroundColor(color);
+                break;
+            case "C4":
+                buttonC4.setBackgroundColor(color);
+                break;
+            case "D4":
+                buttonD4.setBackgroundColor(color);
+                break;
+            case "E4":
+                buttonE4.setBackgroundColor(color);
+                break;
+            case "F4":
+                buttonF4.setBackgroundColor(color);
+                break;
+            case "G4":
+                buttonG4.setBackgroundColor(color);
+                break;
+            case "A4":
+                buttonA4.setBackgroundColor(color);
+                break;
+            case "B4":
+                buttonB4.setBackgroundColor(color);
+                break;
+            case "C5":
+                buttonC5.setBackgroundColor(color);
+                break;
+            case "D5":
+                buttonD5.setBackgroundColor(color);
+                break;
+            case "E5":
+                buttonE5.setBackgroundColor(color);
+                break;
+            case "F5":
+                buttonF5.setBackgroundColor(color);
+                break;
+            case "G5":
+                buttonG5.setBackgroundColor(color);
+                break;
+            case "A5":
+                buttonA5.setBackgroundColor(color);
+                break;
+            case "B5":
+                buttonB5.setBackgroundColor(color);
+                break;
+            case "C6":
+                buttonC6.setBackgroundColor(color);
+                break;
+            case "D6":
+                buttonD6.setBackgroundColor(color);
+                break;
+            case "E6":
+                buttonE6.setBackgroundColor(color);
+                break;
+            case "F6":
+                buttonF6.setBackgroundColor(color);
+                break;
+            case "G6":
+                buttonG6.setBackgroundColor(color);
+                break;
+            case "A6":
+                buttonA6.setBackgroundColor(color);
+                break;
+            case "B6":
+                buttonB6.setBackgroundColor(color);
+                break;
+            case "C7":
+                buttonC7.setBackgroundColor(color);
+                break;
+            case "D7":
+                buttonD7.setBackgroundColor(color);
+                break;
+            case "E7":
+                buttonE7.setBackgroundColor(color);
+                break;
+            case "F7":
+                buttonF7.setBackgroundColor(color);
+                break;
+            case "G7":
+                buttonG7.setBackgroundColor(color);
+                break;
+            case "A7":
+                buttonA7.setBackgroundColor(color);
+                break;
+            case "B7":
+                buttonB7.setBackgroundColor(color);
+                break;
+                default:
+                    break;
+        }
+    }
+
+    private static String getValue(String tag, Element element) {
+        NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
+        Node node = nodeList.item(0);
+        return node.getNodeValue();
+    }
 }

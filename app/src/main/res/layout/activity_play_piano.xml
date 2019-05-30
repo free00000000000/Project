@@ -546,4 +546,10 @@
         </RelativeLayout>
     </HorizontalScrollView>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PLAY"
+        android:onClick="auto_play_piano"/>
+
 </RelativeLayout>
