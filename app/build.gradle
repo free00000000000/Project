@@ -34,4 +34,5 @@ dependencies {
     implementation 'com.pnikosis:materialish-progress:1.7'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.17'
     implementation 'com.github.billthefarmer:mididriver:v1.17'
+    implementation "com.andkulikov:transitionseverywhere:2.0.0-beta01"
 }

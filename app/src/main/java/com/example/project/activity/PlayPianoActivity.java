@@ -19,8 +19,6 @@ import org.billthefarmer.mididriver.MidiDriver;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.InputStream;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -29,6 +27,25 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import android.annotation.TargetApi;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.widget.FrameLayout;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+import androidx.transition.ChangeBounds;
+import androidx.transition.Transition;
+import androidx.transition.TransitionManager;
+
 
 public class PlayPianoActivity extends AppCompatActivity implements View.OnTouchListener,
         MidiDriver.OnMidiStartListener {
@@ -149,6 +166,7 @@ public class PlayPianoActivity extends AppCompatActivity implements View.OnTouch
     private TextView tg7;
     private TextView ta7;
     private TextView tb7;
+    private ViewGroup transitionsContainer;
 
     private MediaPlayer mPlayer;
     String note, duration, staff;
@@ -367,6 +385,31 @@ public class PlayPianoActivity extends AppCompatActivity implements View.OnTouch
         tg7.setOnTouchListener(this);
         ta7.setOnTouchListener(this);
         tb7.setOnTouchListener(this);
+
+        transitionsContainer = findViewById(R.id.activity_play_piano);
+        final View button = findViewById(R.id.play_button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+
+            boolean mToRightAnimation;
+
+            @Override
+            public void onClick(View v) {
+                mToRightAnimation = !mToRightAnimation;
+
+                Transition transition = new ChangeBounds();
+                transition.setDuration(mToRightAnimation ? 700 : 300);
+                transition.setInterpolator(mToRightAnimation ? new FastOutSlowInInterpolator() : new AccelerateInterpolator());
+                transition.setStartDelay(mToRightAnimation ? 0 : 500);
+                TransitionManager.beginDelayedTransition(transitionsContainer, transition);
+
+                FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) button.getLayoutParams();
+                params.gravity = mToRightAnimation ? (Gravity.RIGHT | Gravity.TOP) : (Gravity.LEFT | Gravity.TOP);
+                button.setLayoutParams(params);
+            }
+
+        });
+
         scrollpiano.post(new Runnable() {
                              public void run() {
 
